@@ -1,0 +1,27 @@
+{
+  "name": "harrypotter",
+  "version": "1.0.0",
+  "description": "Node.js wrapper for Harry Potter api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KBuon/harrypotter_nodejs.git"
+  },
+  "keywords": [
+    "Harry",
+    "Potter",
+    "hogwarts"
+  ],
+  "author": "Kuntharith Buon <kuntharith.buon@gmail.com> (http://www.kbuon.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KBuon/harrypotter_nodejs/issues"
+  },
+  "homepage": "https://github.com/KBuon/harrypotter_nodejs#readme",
+  "dependencies": {
+    "request": "^2.74.0"
+  }
+}
