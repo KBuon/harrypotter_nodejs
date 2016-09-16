@@ -13,15 +13,30 @@ var invalidMovieIDType = new TypeError("'movieID' must be of type string");
 var invalidEmpType = new TypeError("'dispEmp' must be of type boolean");
 var invalidEmpIDType = new TypeError("'empID' must be of type string");
 var invalidDispType = new TypeError("'dispDetailed' must be of type boolean");
+var invalidCallbackType  = new TypeError("'callback' must be a function");
 
 var undefMovieID = new Error("'movieID' must be defined");
 var undefDispEmp = new Error("'dispEmp' must be defined");
 var undefEmpID = new Error("'empID' must be defined");
 var undefDispType = new Error("'dispDetailed' must be defined");
+var undefCallback = new Error("'callback' is not defined");
+
+var invalidArgs = new Error("Invalid 'callback' args");
 
 var client = function () {};
 
 client.prototype.getAllMovies = function(callback) {
+	if (callback == undefined){
+		throw undefCallback;
+		return;
+	} else if (typeof callback !== 'function'){
+		throw invalidCallbackType;
+		return;
+	} else if (callback.length != 2){
+		throw invalidArgs;
+		return;
+	}
+
        	request({url: endpoints.movies, json:true}, function(err, resp, data){
        		callback(err, data);
        	});
@@ -40,10 +55,21 @@ client.prototype.getMovieDetails = function(movieID, dispEmp, callback){
        	if (dispEmp == undefined){
        		throw undefDispEmp;
        		return;
-       	}else if (typeof dispEmp !== 'boolean'){
+       	} else if (typeof dispEmp !== 'boolean'){
        		throw invalidEmpType;
        		return;
        	}
+
+	if (callback == undefined){
+		throw undefCallback;
+		return;
+	} else if (typeof callback !== 'function'){
+		throw invalidCallbackType;
+		return;
+	} else if (callback.length != 2){
+		throw invalidArgs;
+		return;
+	}
 
        	if (dispEmp){ // Full Details
        		var url = endpoints.movies + movieID + "/employees";
@@ -59,6 +85,18 @@ client.prototype.getMovieDetails = function(movieID, dispEmp, callback){
 };
 
 client.prototype.getEmployees = function(callback){
+	// Error Checking
+	if (callback == undefined){
+		throw undefCallback;
+		return;
+	} else if (typeof callback !== 'function'){
+		throw invalidCallbackType;
+		return;
+	} else if (callback.length != 2){
+		throw invalidArgs;
+		return;
+	}
+
 	request({url: endpoints.employees, json:true}, function(err, resp,
 	data){
 		callback(err, data);
@@ -78,8 +116,19 @@ client.prototype.getEmployeeInfo = function(empID, dispDetailed, callback){
 	if (dispDetailed == undefined){
 		throw undefDispType;
 		return;
-	}else if (typeof dispDetailed !== 'boolean'){
+	}else if (typeof dispDetailed !== 'boolean'){	
 		throw invalidDispType;
+		return;
+	}
+
+	if (callback == undefined){
+		throw undefCallback;
+		return;
+	} else if (typeof callback !== 'function'){
+		throw invalidCallbackType;
+		return;
+	} else if (callback.length != 2){
+		throw invalidArgs;
 		return;
 	}
 
