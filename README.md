@@ -1,6 +1,8 @@
 # harrypotter_nodejs
 Package utilizes @andyrewlee's harry potter api.</br>
 Link to his project can be found [HERE](https://github.com/andyrewlee/harrypotterapi).
+## Status
+[![Build Status](https://travis-ci.org/KBuon/harrypotter_nodejs.svg?branch=master)](https://travis-ci.org/KBuon/harrypotter_nodejs)
 
 ## Installation
 ```
